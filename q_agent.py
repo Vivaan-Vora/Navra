@@ -1,4 +1,4 @@
-"""Tabular Q-learning agent."""
+"""Tabular Q-learning agent with epsilon-greedy exploration."""
 from __future__ import annotations
 import json, random
 from pathlib import Path

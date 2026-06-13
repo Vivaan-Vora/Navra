@@ -1,4 +1,4 @@
-"""Logging and metrics plotting."""
+"""Navra training log writer and metrics plotting."""
 from __future__ import annotations
 import csv
 from datetime import datetime

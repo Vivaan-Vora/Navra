@@ -2,6 +2,8 @@
 from __future__ import annotations
 import numpy as np
 
+# VNS combines path efficiency, smoothness, and obstacle avoidance.
+
 def direction_changes(path: list[tuple[int,int]]) -> int:
     """Count direction changes."""
     if len(path) < 3:

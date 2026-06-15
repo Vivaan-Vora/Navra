@@ -52,7 +52,7 @@ def diagnostics_report(rows: list[dict], reports_dir: Path) -> Path:
     text = '\n'.join([
         'Navra Diagnostics Report',
         '='*30,
-        f'Episodes analyzed: {len(rows)}',
+        f'Training episodes analyzed: {len(rows)}',
         f'Average final health: {sum(health)/len(health):.2f}',
         f'Degraded events: {sum(int(r.get("degraded_events",0)) for r in rows)}',
         f'Critical events: {sum(int(r.get("critical_events",0)) for r in rows)}',

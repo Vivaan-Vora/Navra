@@ -59,6 +59,8 @@ navra/
 
 ## Pipeline
 
+Navra supports a unified workflow for both 2D and 3D navigation experiments.
+
 1. Generate a valid 2D or 3D warehouse layout.
 2. Simulate observations from the relevant sensor module.
 3. Run pathfinding and/or learning agents.
@@ -67,12 +69,10 @@ navra/
 
 ## Configuration
 
-The `config.json` file includes settings for both environment types, training hyperparameters, diagnostics thresholds, navigation scoring weights, and output paths.
+The Navra `config.json` file includes settings for both environment types, training hyperparameters, diagnostics thresholds, navigation scoring weights, and output paths.
 
 For 3D, `environment_3d` controls voxel size, difficulty, and moving obstacle count.
 
 ## Lessons From This Project
 
-Supporting both 2D and 3D in one codebase increases complexity, but it also creates a stronger architecture for fast iteration and realistic validation.
-
-Reliable metrics beyond reward are essential. Diagnostics, difficulty scoring, and failure classification provide the visibility needed to improve policy quality in real warehouse conditions.
+This project showed that supporting both 2D and 3D navigation in one system is useful but requires careful design. Good simulation setup matters because changing obstacles and sensor noise can quickly change agent results. Reward alone is not enough to judge performance, so adding diagnostics, failure tracking, and scoring made it easier to understand what was working and what needed improvement. Keeping modules separate for environment setup, sensing, planning, training, and analysis also made the project easier to build and extend over time.

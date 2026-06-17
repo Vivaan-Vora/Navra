@@ -19,6 +19,8 @@ from scorer import compute_vns
 from pathfinder import manhattan
 from sensors import get_sensor_vector
 import torch
+from environment3d import generate_environment_3d, plot_environment_3d
+from pathfinder3d import astar3d, compare_algorithms_3d
 
 def load_config(path: Path=Path('config.json')) -> dict:
     """Load JSON configuration."""
@@ -27,7 +29,7 @@ def load_config(path: Path=Path('config.json')) -> dict:
 def parse_args() -> argparse.Namespace:
     """Parse CLI arguments."""
     p=argparse.ArgumentParser(description='Verxify warehouse navigation simulator')
-    p.add_argument('--mode',required=True,choices=['train-q','train-dqn','test','astar','benchmark','replay','diagnostics','score','analyze-env','failures','compare'])
+    p.add_argument('--mode',required=True,choices=['train-q','train-dqn','test','astar','benchmark','replay','diagnostics','score','analyze-env','failures','compare','test-3d','astar-3d'])
     p.add_argument('--difficulty',choices=['easy','medium','hard'],default=None)
     p.add_argument('--episodes',type=int,default=None)
     p.add_argument('--seed',type=int,default=42)
@@ -98,6 +100,17 @@ def main() -> None:
             dqn.model.load_state_dict(torch.load(dqn_model_path,map_location='cpu'))
             dqn.target.load_state_dict(dqn.model.state_dict())
         compare_agents(config,qa,dqn,environments=config['comparator']['num_test_environments'],seed=args.seed)
+    elif args.mode=='test-3d':
+        cfg3d=config.get('environment_3d', {'size':[20,20,8],'difficulty':'medium','moving_obstacles':5})
+        env=generate_environment_3d(tuple(cfg3d['size']),cfg3d['difficulty'],cfg3d['moving_obstacles'],args.seed)
+        compare_algorithms_3d(env)
+        plot_environment_3d(env, title='3D Warehouse Test Environment')
+    elif args.mode=='astar-3d':
+        cfg3d=config.get('environment_3d', {'size':[20,20,8],'difficulty':'medium','moving_obstacles':5})
+        env=generate_environment_3d(tuple(cfg3d['size']),cfg3d['difficulty'],cfg3d['moving_obstacles'],args.seed)
+        path,length,explored=astar3d(env)
+        print(f'3D A* path length={length} explored={explored}')
+        plot_environment_3d(env, title='3D Warehouse A* Result')
 
 if __name__=='__main__':
     """Program entry."""

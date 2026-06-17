@@ -1,38 +1,28 @@
-# Verxify
+# Verxify 3D
 
 ## Overview
 
-Verxify is a Python project for 2D warehouse robot navigation simulation. It combines classic pathfinding and reinforcement learning so agents can navigate in changing environments with static and moving obstacles.
+Verxify 3D is a Python warehouse navigation simulator built around voxel-based 3D environments. It extends the previous 2D approach into full 3D path planning with dynamic obstacles, realistic sensing features, and baseline algorithm comparisons.
 
-The project is designed to be clear and practical. It includes environment generation, sensor simulation, Q-learning, DQN, benchmarking, diagnostics, and visual analysis tools.
+The project includes both legacy 2D modules and new 3D modules so experiments can be compared across dimensions.
 
-![Example Environment 1](examples/environment_1.png)
+![3D Environment 1](examples/environment3d_1.png)
 
-## Problem
+## What Changed In The 3D Upgrade
 
-Warehouse robots that rely on fixed paths fail when layouts change. A moved box, temporary aisle block, or crossing worker can break route assumptions and reduce throughput.
-
-## Solution
-
-Verxify trains and evaluates navigation policies in simulation before deployment. It measures not just success, but also efficiency, health, and failure behavior.
-
-## What Was Built
-
-- Grid-based environment generator with difficulty presets and dynamic obstacles
-- Sensor module with 8 ray readings plus goal angle and distance
-- Pathfinding baselines: BFS, Dijkstra, and A*
-- Q-learning and DQN agents
-- Logging, plotting, diagnostics, failure analysis, and policy comparison
-- Benchmarking and environment difficulty analysis
+- Added `environment3d.py` for 3D voxel warehouse generation
+- Added `sensors3d.py` for 3D ray features and goal orientation
+- Added `pathfinder3d.py` with BFS, Dijkstra, and A* in 3D
+- Added `generate_examples_3d.py` for documentation visuals
+- Added CLI modes: `test-3d` and `astar-3d`
+- Added `environment_3d` configuration section in `config.json`
 
 ## Languages And Libraries Used
 
-The project is built in **Python**.
-
-Core libraries:
-- **NumPy** for numeric arrays and feature handling
-- **PyTorch** for the DQN model and training updates
-- **Matplotlib** for plotting, heatmaps, and comparison visuals
+- Python
+- NumPy
+- PyTorch
+- Matplotlib
 
 ## Repository Structure
 
@@ -40,8 +30,11 @@ Core libraries:
 verxify/
 ├── main.py
 ├── environment.py
+├── environment3d.py
 ├── sensors.py
+├── sensors3d.py
 ├── pathfinder.py
+├── pathfinder3d.py
 ├── q_agent.py
 ├── dqn_agent.py
 ├── benchmark.py
@@ -53,40 +46,38 @@ verxify/
 ├── logger.py
 ├── visualizer.py
 ├── generate_examples.py
+├── generate_examples_3d.py
 ├── config.json
-├── requirements.txt
-├── examples/
-├── logs/
-├── models/
-└── reports/
+└── README.md
 ```
 
-![Example Environment 2](examples/environment_2.png)
+![3D Environment 2](examples/environment3d_2.png)
 
-## How It Works
+## 3D Navigation Pipeline
 
-1. Generate a valid warehouse map with selected difficulty.
-2. Read sensor observations from rays and goal features.
-3. Train or evaluate a navigation policy.
-4. Log episode metrics to CSV.
-5. Analyze results with plots, diagnostics, benchmark summaries, and failure reports.
+1. Generate a valid 3D warehouse with BFS connectivity checks.
+2. Simulate obstacles and extract 3D sensor observations.
+3. Run baseline 3D pathfinders for reproducible comparisons.
+4. Visualize voxel layouts and compare complexity by difficulty.
 
-## Diagnostics And Scoring
+## New 3D CLI Modes
 
-Training logs include reward, steps, success, epsilon, health, failure type, and navigation score. The project also computes an environment difficulty index and benchmark summaries grouped by difficulty quartiles.
+- `python main.py --mode test-3d --seed 42`
+- `python main.py --mode astar-3d --seed 42`
+- `python generate_examples_3d.py`
 
-![Example Environment 3](examples/environment_3.png)
-
-
+![3D Environment 3](examples/environment3d_3.png)
 
 ## Configuration
 
-`config.json` controls environment settings, training limits, learning hyperparameters, diagnostics thresholds, scoring weights, benchmark behavior, and output paths.
+`config.json` now includes an `environment_3d` block:
+
+- `size`: voxel dimensions `[x, y, z]`
+- `difficulty`: easy, medium, or hard
+- `moving_obstacles`: number of dynamic 3D obstacles
 
 ## Lessons From This Project
 
-Reliable simulation quality matters as much as model architecture. Better map realism and disturbance modeling lead to more useful policy behavior.
+Moving from 2D to 3D significantly changes complexity. Pathfinding cost, obstacle interactions, and visualization clarity all require stronger design choices.
 
-Metrics beyond reward are necessary for debugging. Health tracking, failure labels, and navigation score trends reveal issues that success rate alone cannot.
-
-Classical planners are important baselines. They provide a grounded reference when evaluating learned policies.
+Clear modular boundaries helped this upgrade. The 3D extension was added with new files and minimal disruption to existing 2D workflows.

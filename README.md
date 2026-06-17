@@ -75,6 +75,10 @@ Navra supports a unified workflow for both 2D and 3D navigation experiments.
 4. Log reward, stability, health, and failure metrics.
 5. Analyze outputs with plots, leaderboards, and diagnostics reports.
 
+## Dependencies
+
+Pinned versions live in `requirements.txt` (NumPy, PyTorch, Matplotlib).
+
 ## Configuration
 
 The Navra `config.json` file includes settings for both environment types, training hyperparameters, diagnostics thresholds, navigation scoring weights, and output paths.

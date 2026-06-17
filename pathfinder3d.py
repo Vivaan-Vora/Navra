@@ -1,4 +1,4 @@
-"""3D pathfinding algorithms for voxel environments."""
+"""Navra 3D pathfinding algorithms for voxel warehouse environments."""
 from __future__ import annotations
 
 import heapq

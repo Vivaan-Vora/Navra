@@ -57,6 +57,14 @@ navra/
 └── README.md
 ```
 
+## Quickstart
+
+```bash
+pip install -r requirements.txt
+python main.py --mode astar --difficulty medium
+python main.py --mode train-q --episodes 100
+```
+
 ## Pipeline
 
 Navra supports a unified workflow for both 2D and 3D navigation experiments.

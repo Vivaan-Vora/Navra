@@ -1,8 +1,8 @@
-# Astra-Path
+# Verxify
 
 ## Overview
 
-Astra-Path is a Python project for 2D warehouse robot navigation simulation. It combines classic pathfinding and reinforcement learning so agents can navigate in changing environments with static and moving obstacles.
+Verxify is a Python project for 2D warehouse robot navigation simulation. It combines classic pathfinding and reinforcement learning so agents can navigate in changing environments with static and moving obstacles.
 
 The project is designed to be clear and practical. It includes environment generation, sensor simulation, Q-learning, DQN, benchmarking, diagnostics, and visual analysis tools.
 
@@ -14,7 +14,7 @@ Warehouse robots that rely on fixed paths fail when layouts change. A moved box,
 
 ## Solution
 
-Astra-Path trains and evaluates navigation policies in simulation before deployment. It measures not just success, but also efficiency, health, and failure behavior.
+Verxify trains and evaluates navigation policies in simulation before deployment. It measures not just success, but also efficiency, health, and failure behavior.
 
 ## What Was Built
 
@@ -37,7 +37,7 @@ Core libraries:
 ## Repository Structure
 
 ```text
-astra-path/
+verxify/
 ├── main.py
 ├── environment.py
 ├── sensors.py
@@ -77,26 +77,7 @@ Training logs include reward, steps, success, epsilon, health, failure type, and
 
 ![Example Environment 3](examples/environment_3.png)
 
-## How To Run
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-
-python main.py --mode train-q --difficulty medium --episodes 500 --seed 42
-python main.py --mode train-dqn --difficulty medium --episodes 500 --seed 42
-python main.py --mode test --difficulty medium --seed 42
-python main.py --mode astar --difficulty medium --seed 42
-python main.py --mode benchmark --difficulty medium --seed 42
-python main.py --mode replay
-python main.py --mode diagnostics
-python main.py --mode score --difficulty medium --seed 42
-python main.py --mode analyze-env --difficulty hard --seed 7
-python main.py --mode failures
-python main.py --mode compare --seed 42
-python generate_examples.py
-```
 
 ## Configuration
 

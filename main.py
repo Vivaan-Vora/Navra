@@ -1,4 +1,4 @@
-"""CLI entry point for Astra-Path."""
+"""CLI entry point for Verxify."""
 from __future__ import annotations
 import argparse, json
 from pathlib import Path
@@ -26,7 +26,7 @@ def load_config(path: Path=Path('config.json')) -> dict:
 
 def parse_args() -> argparse.Namespace:
     """Parse CLI arguments."""
-    p=argparse.ArgumentParser(description='Astra-Path warehouse navigation simulator')
+    p=argparse.ArgumentParser(description='Verxify warehouse navigation simulator')
     p.add_argument('--mode',required=True,choices=['train-q','train-dqn','test','astar','benchmark','replay','diagnostics','score','analyze-env','failures','compare'])
     p.add_argument('--difficulty',choices=['easy','medium','hard'],default=None)
     p.add_argument('--episodes',type=int,default=None)

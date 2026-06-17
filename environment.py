@@ -85,23 +85,24 @@ def plot_environment(env: WarehouseEnvironment, title: str='Environment', path: 
     view[env.goal] = 4
 
     cmap=ListedColormap([
-        '#f8fafc',  # free
-        '#1f2937',  # wall
-        '#f59e0b',  # moving obstacle
-        '#2563eb',  # start
-        '#16a34a',  # goal
+        '#f1f5f9',  # free
+        '#0f172a',  # wall
+        '#ff4d6d',  # moving obstacle
+        '#7c3aed',  # start
+        '#22c55e',  # goal
     ])
     legend=[
-        Patch(facecolor='#f8fafc', edgecolor='black', label='Open Cell'),
-        Patch(facecolor='#1f2937', edgecolor='black', label='Shelf / Wall'),
-        Patch(facecolor='#f59e0b', edgecolor='black', label='Moving Obstacle'),
-        Patch(facecolor='#2563eb', edgecolor='black', label='Start'),
-        Patch(facecolor='#16a34a', edgecolor='black', label='Goal'),
+        Patch(facecolor='#f1f5f9', edgecolor='black', label='Open Cell'),
+        Patch(facecolor='#0f172a', edgecolor='black', label='Shelf / Wall'),
+        Patch(facecolor='#ff4d6d', edgecolor='black', label='Moving Obstacle'),
+        Patch(facecolor='#7c3aed', edgecolor='black', label='Start'),
+        Patch(facecolor='#22c55e', edgecolor='black', label='Goal'),
     ]
 
     fig, ax = plt.subplots(figsize=(7,7))
     ax.imshow(view, cmap=cmap, vmin=0, vmax=4, origin='upper')
-    ax.set_title(title, fontsize=13, fontweight='bold')
+    ax.set_facecolor('#e2e8f0')
+    ax.set_title(title, fontsize=14, fontweight='bold', color='#0f172a')
     ax.set_xticks([])
     ax.set_yticks([])
     ax.legend(handles=legend, loc='lower center', bbox_to_anchor=(0.5, -0.08), ncol=2, frameon=False)

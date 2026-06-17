@@ -57,6 +57,16 @@ navra/
 └── README.md
 ```
 
+## CLI Modes
+
+| Mode | Purpose |
+|------|---------|
+| `train-q` | Train tabular Q-learning agent |
+| `train-dqn` | Train deep Q-network agent |
+| `astar` / `astar-3d` | Run baseline planning |
+| `benchmark` | Compare pathfinding methods |
+| `diagnostics` | Generate health reports |
+
 ## Quickstart
 
 ```bash

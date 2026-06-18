@@ -53,7 +53,9 @@ navra/
 ├── generate_examples.py
 ├── generate_examples_3d.py
 ├── config.json
+├── models/
 ├── examples/
+├── logs/
 └── README.md
 ```
 

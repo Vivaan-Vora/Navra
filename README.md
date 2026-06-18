@@ -75,6 +75,10 @@ python main.py --mode astar --difficulty medium
 python main.py --mode train-q --episodes 100
 ```
 
+## Evaluation Modes
+
+Navra supports side-by-side evaluation of classical planners and learned policies. Use `benchmark` for pathfinding comparisons and `compare` for agent rollouts on shared environments.
+
 ## Pipeline
 
 Navra supports a unified workflow for both 2D and 3D navigation experiments.

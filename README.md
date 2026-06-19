@@ -111,6 +111,10 @@ The Navra `config.json` file includes settings for both environment types, train
 
 For 3D, `environment_3d` controls voxel size, difficulty, and moving obstacle count.
 
+## Training Tips
+
+Start with `train-q` on medium difficulty before moving to DQN or 3D modes. Review `logs/training_log.csv` and diagnostics reports after each run to catch instability early.
+
 ## Lessons From This Project
 
 Building Navra showed that supporting both 2D and 3D navigation in one system is useful but requires careful design. Good simulation setup matters because changing obstacles and sensor noise can quickly change agent results. Reward alone is not enough to judge performance, so adding diagnostics, failure tracking, and scoring made it easier to understand what was working and what needed improvement. Keeping modules separate for environment setup, sensing, planning, training, and analysis also made the project easier to build and extend over time.

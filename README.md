@@ -1,6 +1,6 @@
 # Navra
 
-## Foundation
+## Overview
 
 Navra is a warehouse navigation intelligence simulator built for both 2D grid navigation and 3D voxel navigation. It combines classical planning and reinforcement learning so teams can test route quality, reliability, and failure behavior under realistic warehouse constraints.
 
